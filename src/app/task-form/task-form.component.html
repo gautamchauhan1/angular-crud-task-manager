@@ -1,0 +1,38 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form-container">
+<mat-form-field appearance="outline">
+  <mat-label>Title</mat-label>
+  <input matInput formControlName="title" placeholder="Enter task name">
+  <mat-error>Title is required</mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Priority</mat-label>
+  <mat-select formControlName="priority">
+    <mat-option value="low">Low</mat-option>
+    <mat-option value="medium">Medium</mat-option>
+    <mat-option value="high">High</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Choose a date</mat-label>
+  <input matInput [matDatepicker]="picker" formControlName="dueDate">
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+  <mat-error>
+    Please select a due date
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Description</mat-label>
+  <textarea matInput formControlName="description" rows="3" placeholder="write description here"></textarea>
+</mat-form-field>
+
+<section>
+    <button type="submit" mat-raised-button color="primary" [disabled]="taskForm.invalid" > {{editId? 'Update Task' : 'Save Task'}}</button>
+    <button type="button" mat-raised-button color="warn" (click)="cancelForm()">Cancel</button>
+
+</section>
+</form>

@@ -1,0 +1,18 @@
+.task-form-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px auto;
+    max-width: 35%;
+
+    section{
+        display: flex;
+        justify-content: space-between;
+        gap:10px;
+        margin-bottom: 20px;
+    }
+
+    button{
+        width: 100%;
+    }
+}
