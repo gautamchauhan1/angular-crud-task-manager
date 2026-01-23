@@ -1,17 +1,10 @@
 <mat-toolbar class="toolbar">
   <span>Task CRUD App</span>
-  <button mat-raised-button color="accent" (click)="openForm()">
+  <button mat-raised-button color="accent" routerLink="/tasks/add">
         <mat-icon>add</mat-icon> Add New Task
       </button>
 </mat-toolbar>
 
-<div *ngIf="!showForm">
-<app-task-list (editRequest)="onEditTask($event)"></app-task-list>
-</div>
-
-<div *ngIf="showForm">
-    <div>
-        <button class="back-botton" mat-raised-button color="primary" (click)="closeForm()"> <mat-icon>arrow_back</mat-icon> Back to List</button>
-    </div>
-    <app-task-form (taskAdded)="closeForm()" [taskData]="taskToEdit"></app-task-form>
+<div>
+    <router-outlet></router-outlet>
 </div>

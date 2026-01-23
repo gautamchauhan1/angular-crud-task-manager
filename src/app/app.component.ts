@@ -11,20 +11,4 @@ export class AppComponent {
 
   showForm: boolean = false;
 
-  taskToEdit: any = null;
-  
-  openForm(){
-    this.taskToEdit = null;
-    this.showForm = true;
-  }
-
-    closeForm(){
-    this.showForm = false;
-  }
-
-  onEditTask(task: Task){
-    this.taskToEdit = task;
-    this.showForm = true;
-  }
-
 }

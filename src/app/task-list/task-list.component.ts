@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { Task } from '../models/task';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { TaskService } from '../services/task.service';
 import { NotificationService } from '../services/notification.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,14 +10,10 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss']
 })
-export class TaskListComponent implements OnInit, OnChanges, AfterViewInit {
+export class TaskListComponent implements OnInit, AfterViewInit {
 
   constructor(private taskService: TaskService, private notification: NotificationService){}
-
-
-  @Output() editRequest = new EventEmitter<any>();
-  // tasks: Task[] = [];
-
+  
   @ViewChild(MatSort) htmlSort!: MatSort;
   @ViewChild(MatPaginator) htmlPaginator!: MatPaginator;
 
@@ -28,9 +23,6 @@ export class TaskListComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   dataSource = new MatTableDataSource<any>(); // replace this instead of array
-
-  ngOnChanges(changes: SimpleChanges): void {
-  }
 
   applyFilter(event: Event){
     const filterValue = (event.target as HTMLInputElement).value;
@@ -76,10 +68,6 @@ export class TaskListComponent implements OnInit, OnChanges, AfterViewInit {
       }
 
     })
-  }
-
-  editTask(task: Task){
-   this.editRequest.emit(task);
   }
 
 }

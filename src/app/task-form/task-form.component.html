@@ -1,3 +1,7 @@
+<div class="p-4">
+<button mat-raised-button color="primary" routerLink="/tasks"> <mat-icon>arrow_back</mat-icon> Back to list</button>
+</div>
+
 <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form-container">
 <mat-form-field appearance="outline">
   <mat-label>Title</mat-label>
@@ -31,8 +35,8 @@
 </mat-form-field>
 
 <section>
-    <button type="submit" mat-raised-button color="primary" [disabled]="taskForm.invalid" > {{editId? 'Update Task' : 'Save Task'}}</button>
-    <button type="button" mat-raised-button color="warn" (click)="cancelForm()">Cancel</button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="taskForm.invalid" > {{isEditMode? 'Update Task' : 'Save Task'}}</button>
+    <button type="button" mat-raised-button color="warn" routerLink="['/tasks']">Cancel</button>
 
 </section>
 </form>
