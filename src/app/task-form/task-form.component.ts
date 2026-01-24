@@ -3,13 +3,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TaskService } from '../services/task.service';
 import { NotificationService } from '../services/notification.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CanComponentDeactivate } from '../interfaces/can-component-deactivate';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-task-form',
   templateUrl: './task-form.component.html',
   styleUrls: ['./task-form.component.scss']
 })
-export class TaskFormComponent implements OnInit  {
+export class TaskFormComponent implements OnInit, CanComponentDeactivate  {
 
   taskForm!: FormGroup;
   constructor(
@@ -23,8 +25,19 @@ export class TaskFormComponent implements OnInit  {
   this.initForm();
   }
 
+  canExit(): boolean{
+if(this.isFormDirty){
+  return confirm('⚠️ You have unsaved changes! Do you really want to leave?')
+}
+return true;
+  }
   taskID: any = null;
   isEditMode = false;
+  isFormDirty: boolean = false;
+
+  markAsDirty() {
+    this.isFormDirty = true;
+  }
 
   ngOnInit(): void {
     this.taskID = this.route.snapshot.paramMap.get('id');
@@ -75,6 +88,7 @@ export class TaskFormComponent implements OnInit  {
           {
             this.notification.showSuccess('Task Updated!');
             this.router.navigate(['/tasks']);
+            this.isFormDirty = false
           },
           error: (err)=>
           {
@@ -90,6 +104,7 @@ export class TaskFormComponent implements OnInit  {
           {
             this.notification.showSuccess('Task Added!');
             this.router.navigate(['/tasks']);
+            this.isFormDirty = false;
           },
           error:(err)=> {
             this.notification.showError('Error adding task!');
