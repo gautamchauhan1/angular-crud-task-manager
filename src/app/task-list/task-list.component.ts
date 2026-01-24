@@ -4,6 +4,7 @@ import { NotificationService } from '../services/notification.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-task-list',
@@ -12,7 +13,11 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class TaskListComponent implements OnInit, AfterViewInit {
 
-  constructor(private taskService: TaskService, private notification: NotificationService){}
+  constructor(
+    private taskService: TaskService, 
+    private notification: NotificationService,
+    private authService: AuthService
+  ){}
   
   @ViewChild(MatSort) htmlSort!: MatSort;
   @ViewChild(MatPaginator) htmlPaginator!: MatPaginator;
@@ -68,6 +73,10 @@ export class TaskListComponent implements OnInit, AfterViewInit {
       }
 
     })
+  }
+
+  logout(){
+    this.authService.logout();
   }
 
 }

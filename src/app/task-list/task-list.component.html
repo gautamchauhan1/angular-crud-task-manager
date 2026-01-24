@@ -1,9 +1,19 @@
+<mat-toolbar class="toolbar">
+    <span>Task CRUD App</span>
+    <button mat-raised-button color="accent" routerLink="/tasks/add">
+        <mat-icon>add</mat-icon> Add New Task
+    </button>
+    <button mat-raised-button color="primary" (click)="logout()">Logout 🚪</button>
+    
+
+</mat-toolbar>
+
 <!-- Filter -->
- <mat-form-field appearance="outline" style="width: 100%;">
+<mat-form-field appearance="outline" style="width: 100%;">
     <mat-label>Search Tasks</mat-label>
- <input matInput (keyup)="applyFilter($event)" placeholder="ex: High" #input>
- <mat-icon matSuffix>search</mat-icon>
- </mat-form-field>
+    <input matInput (keyup)="applyFilter($event)" placeholder="ex: High" #input>
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
 
 <table mat-table [dataSource]="dataSource" matSort>
 
@@ -42,8 +52,5 @@
 </table>
 
 <!-- Put this paginator code below the table -->
-    <mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
-    aria-label="select page of tasks">    
-    </mat-paginator>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="select page of tasks">
+</mat-paginator>

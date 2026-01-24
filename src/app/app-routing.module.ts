@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  //lazy loading Syntax
-  {path: 'tasks', loadChildren: ()=> import('./tasks/tasks.module').then(m=> m.TasksModule)},
-  // if user open only 'localhost:4200'
-  {path:'', redirectTo:'tasks', pathMatch:'full'},
+  {path:'login', component: LoginComponent},
+    //lazy loading Syntax
+  {path: 'tasks', loadChildren: ()=> import('./tasks/tasks.module').then(m=> m.TasksModule), canActivate:[authGuard]},
+  {path:'', redirectTo:'login', pathMatch:'full'},
   // wildcard route, if user enter wrong url
-  {path: '**', redirectTo:'tasks'}
+  {path: '**', redirectTo:'login'}
 ];
 
 @NgModule({
