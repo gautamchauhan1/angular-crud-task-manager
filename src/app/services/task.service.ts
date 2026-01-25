@@ -12,6 +12,11 @@ export class TaskService {
 
   private apiUrl = 'http://localhost:3000/tasks';
 
+
+  getTaskById(id:any): Observable<Task>{
+    return this.http.get<Task>(`${this.apiUrl}/${id}`)
+  }
+
   getTasks(): Observable<Task[]>{
     return this.http.get<Task[]>(this.apiUrl)
   }

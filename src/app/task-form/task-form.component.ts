@@ -40,31 +40,13 @@ return true;
   }
 
   ngOnInit(): void {
-    this.taskID = this.route.snapshot.paramMap.get('id');
-
-    if(this.taskID)
+    const data = this.route.snapshot.data['taskData'];
+    if(data)
     {
       this.isEditMode = true;
-      this.getTaskById(this.taskID);
-
+      this.taskID = data.id;
+      this.taskForm.patchValue(data);
     }
-  }
-
-  getTaskById(id:any){
-    this.taskService.getTasks().subscribe({
-      next:(allTasks)=>
-      {
-        const task = allTasks.find((t:any)=> t.id == id);
-        if(task)
-        {
-          this.taskForm.patchValue(task);
-        }
-      },
-      error:()=>
-      {
-        this.notification.showError('Task not found');
-      }
-    })
   }
 
   initForm(){
