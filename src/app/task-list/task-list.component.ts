@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { AuthService } from '../services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -16,7 +17,9 @@ export class TaskListComponent implements OnInit, AfterViewInit {
   constructor(
     private taskService: TaskService, 
     private notification: NotificationService,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
   ){}
   
   @ViewChild(MatSort) htmlSort!: MatSort;
@@ -27,7 +30,10 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.htmlPaginator;
   }
 
+  allTasksBackup: any [] =[];
   dataSource = new MatTableDataSource<any>(); // replace this instead of array
+  displayedColumns: string[] = ['title', 'priority', 'dueDate', 'actions'];
+
 
   applyFilter(event: Event){
     const filterValue = (event.target as HTMLInputElement).value;
@@ -38,14 +44,13 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     this.getAllTasks();
   }
 
- 
-  displayedColumns: string[] = ['title', 'priority', 'dueDate', 'actions'];
-
   getAllTasks(){
     this.taskService.getTasks().subscribe({
       next: (res)=>
       {
+        this.allTasksBackup= res;
         this.dataSource.data = res;
+        this.listenToQueryParams();
         // after coming data, connects sort and paginator to html DOM
         this.dataSource.sort = this.htmlSort;
         this.dataSource.paginator = this.htmlPaginator;
@@ -56,6 +61,29 @@ export class TaskListComponent implements OnInit, AfterViewInit {
         alert('Error');
         
       }
+    })
+  }
+
+  listenToQueryParams(){
+    this.route.queryParams.subscribe(params=>
+    {
+      const p = params['priority'];
+
+      if(p){
+        const filtered = this.allTasksBackup.filter(t=> t.priority.toLowerCase() === p.toLowerCase());
+        this.dataSource.data = filtered;
+      } else {
+        this.dataSource.data = this.allTasksBackup;
+      }
+    }
+    )
+  }
+
+  updateURLFilter(priorityVal: string | null){
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {priority: priorityVal},
+      queryParamsHandling: 'merge' // put old params if there is any
     })
   }
 

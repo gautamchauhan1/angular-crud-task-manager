@@ -15,6 +15,13 @@
     <mat-icon matSuffix>search</mat-icon>
 </mat-form-field>
 
+<div style="margin-bottom: 15px;">
+  <span>Filter By Priority: </span>
+  <button mat-button color="primary" (click)="updateURLFilter(null)">All</button>
+  <button mat-button color="warn" (click)="updateURLFilter('high')">High</button>
+  <button mat-button color="accent" (click)="updateURLFilter('low')">Low</button>
+</div>
+
 <table mat-table [dataSource]="dataSource" matSort>
 
     <ng-container matColumnDef="title">
