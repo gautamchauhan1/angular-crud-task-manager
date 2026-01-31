@@ -8,6 +8,11 @@ export class AuthService {
 
   constructor(private router: Router) { }
 
+  //this method is for interceptor
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
   //login method, this will set fake token
   login(){
     localStorage.setItem('token', 'fake-jwt-token-123');

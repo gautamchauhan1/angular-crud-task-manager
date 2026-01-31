@@ -15,13 +15,6 @@
       "description": "Sample"
     },
     {
-      "title": "Gautam Task B",
-      "dueDate": "2026-01-04T18:30:00.000Z",
-      "priority": "low",
-      "description": "",
-      "id": "4"
-    },
-    {
       "id": "5",
       "title": "Review",
       "dueDate": "2026-01-05T18:30:00.000Z",

@@ -107,4 +107,5 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     this.authService.logout();
   }
 
+
 }

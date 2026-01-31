@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TaskService } from '../services/task.service';
 import { NotificationService } from '../services/notification.service';
@@ -11,7 +11,15 @@ import { Observable } from 'rxjs';
   templateUrl: './task-form.component.html',
   styleUrls: ['./task-form.component.scss']
 })
-export class TaskFormComponent implements OnInit, CanComponentDeactivate  {
+
+export class TaskFormComponent implements OnInit, OnChanges, CanComponentDeactivate  {
+
+  @Input() data! :number;
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    
+  }
 
   taskForm!: FormGroup;
   constructor(
