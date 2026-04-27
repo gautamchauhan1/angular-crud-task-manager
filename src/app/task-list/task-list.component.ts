@@ -87,8 +87,10 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     })
   }
 
-  deleteTask(id:any){
-    this.taskService.deleteTask(id).subscribe({
+  deleteTask(id:number){
+    if(confirm('Are you sure, you want to delete this task?')){
+
+      this.taskService.deleteTask(id).subscribe({
       next:()=>{
       this.notification.showSuccess('Deleted!');
       this.getAllTasks();
@@ -101,6 +103,8 @@ export class TaskListComponent implements OnInit, AfterViewInit {
       }
 
     })
+
+    }
   }
 
   logout(){
