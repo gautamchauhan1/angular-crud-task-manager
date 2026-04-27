@@ -8,11 +8,11 @@
       "id": "1"
     },
     {
-      "id": "2",
-      "title": "Task A",
+      "title": "Task A1",
       "dueDate": "2026-01-02T18:30:00.000Z",
       "priority": "medium",
-      "description": "Sample"
+      "description": "Sample",
+      "id": "2"
     },
     {
       "id": "5",
@@ -20,13 +20,6 @@
       "dueDate": "2026-01-05T18:30:00.000Z",
       "priority": "medium",
       "description": ""
-    },
-    {
-      "title": "Task A",
-      "dueDate": "2026-01-06T18:30:00.000Z",
-      "priority": "high",
-      "description": "",
-      "id": "6"
     },
     {
       "id": "7",
