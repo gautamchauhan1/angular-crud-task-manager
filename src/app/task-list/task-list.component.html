@@ -7,7 +7,6 @@
     
 </mat-toolbar>
 
-
 <!-- Filter -->
 <mat-form-field appearance="outline" style="width: 100%;">
     <mat-label>Search Tasks</mat-label>
@@ -57,6 +56,10 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 </table>
+
+<div *ngIf="dataSource.data.length===0" style="text-align: center; margin-top: 20px;">
+    <p style="font-size: larger; color: brown; font-weight: 700; border: 1px dashed green;">No Tasks Found</p>
+</div>
 
 <!-- Put this paginator code below the table -->
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="select page of tasks">
