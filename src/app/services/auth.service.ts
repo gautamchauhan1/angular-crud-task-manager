@@ -14,9 +14,17 @@ export class AuthService {
   }
 
   //login method, this will set fake token
-  login(){
+  login(username: string, password: string){
+    if(username==='admin' && password==='1234')
+    {
     localStorage.setItem('token', 'fake-jwt-token-123');
     this.router.navigate(['/tasks']);
+    }
+    else
+    {
+      alert('Invalid credentials');
+    }
+    
   }
 
   logout(){
@@ -24,7 +32,7 @@ export class AuthService {
     this.router.navigate(['/login'])
   }
 
-  isLoggedIn(): boolean{
+  isLoggedIn(): boolean {
     //if token present, return true, otherwise false.
     return !!localStorage.getItem('token');
   }

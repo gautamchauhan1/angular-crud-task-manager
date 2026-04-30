@@ -2,5 +2,11 @@
   <h2>🔐 Login Page</h2>
   <p>Click below button to enter the secure area TaskList</p>
 
-  <button (click)="onLogin()">Login</button>
+  <div>
+  <mat-label>Username</mat-label>
+  <input type="text" style="margin-bottom: 10px;" #username> <br>
+  <mat-label>Password </mat-label>
+  <input type="password" style="margin-bottom: 10px;" #password> <br>
+  <button (click)="onLogin(username.value, password.value)">Login</button>
+  </div>
 </div>

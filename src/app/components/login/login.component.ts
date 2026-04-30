@@ -10,8 +10,8 @@ export class LoginComponent {
 
   constructor(private authService: AuthService){}
 
-  onLogin()
+  onLogin(username: string, password: string)
   {
-    this.authService.login();
+    this.authService.login(username, password);
   }
 }
