@@ -1,27 +1,79 @@
-# CrudApp
+📝 Angular CRUD Task Manager
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+A simple and functional Task Manager application built using Angular.
+This project demonstrates core Angular concepts like components, services, routing, guards, and CRUD operations using a mock backend.
 
-## Development server
+🚀 Features
+➕ Add new tasks
+✏️ Edit existing tasks
+❌ Delete tasks
+📋 View all tasks
+🔐 Basic authentication using localStorage
+🛡️ Route protection using Auth Guards
+🔄 CRUD operations with JSON Server
+🌐 Live Demo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+👉 https://angular-crud-task-manager-ivk2n69sf-gautam-chauhans-projects.vercel.app/
 
-## Code scaffolding
+⚠️ Note:
+The app is deployed on Vercel. Since JSON Server is not supported on Vercel,
+CRUD operations (Add/Edit/Delete) may not work in the live demo.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+🛠️ Tech Stack
+Frontend: Angular
+Backend (Mock): JSON Server
+Language: TypeScript
+Styling: CSS
+📂 Project Structure
+src/app/
+│── components/      # Task list, add/edit components
+│── services/        # TaskService, AuthService
+│── guards/          # AuthGuard for route protection
+│── models/          # Task interface
+│── app-routing.ts   # Routing configuration
+│── app.module.ts    # Root module
+🔐 Authentication
 
-## Build
+This project uses a basic authentication system:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Login state is stored in localStorage
+AuthService handles login and logout
+AuthGuard protects routes from unauthorized access
 
-## Running unit tests
+⚠️ This is a basic implementation for learning purposes.
+In real-world applications, authentication is implemented using JWT or OAuth.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+⚙️ Installation & Setup
+1. Clone the repository
+git clone https://github.com/gautamchauhan1/angular-crud-task-manager.git
+cd angular-crud-task-manager
+2. Install dependencies
+npm install
+3. Run Angular app
+ng serve
+4. Start JSON Server (Mock Backend)
+npx json-server --watch db.json
+5. Open in browser
+http://localhost:4200
+📚 Concepts Covered
+Angular Components & Modules
+Routing & Navigation
+Route Guards (AuthGuard)
+Services & Dependency Injection
+HTTP Client (API calls)
+CRUD Operations
+Two-way Data Binding
+LocalStorage usage
+⚠️ Known Issues
+JSON Server does not work on Vercel deployment
+Backend is simulated (not production-ready)
+🔮 Future Improvements
+🔐 Implement real authentication (JWT / Firebase)
+🌐 Replace JSON Server with real backend (Node.js / Spring Boot)
+🎨 Improve UI/UX
+🔍 Add search and filtering
+📱 Make application responsive
+🤝 Contributing
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Contributions are welcome!
+Feel free to fork the repository and submit a pull request.
