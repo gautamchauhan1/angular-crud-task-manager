@@ -12,14 +12,16 @@ export class NotificationService {
     this.snackBar.open(message, 'OK',{
       duration: 3000,
       horizontalPosition: 'right',
-      verticalPosition: 'bottom',
+      verticalPosition: 'top',
 
     })
   }
 
   showError(message: string){
     this.snackBar.open(message, 'Try Again' ,{
-      duration: 4000
+      duration: 4000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
     })
   }
 }

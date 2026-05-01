@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +10,18 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private authService: AuthService, private notification: NotificationService){}
 
-  onLogin()
+  onLogin(username: string, password: string)
   {
-    this.router.navigate(['/tasks']);
+    if(this.authService.login(username, password))
+    {
+          this.router.navigate(['/tasks']);
+          this.notification.showSuccess('User loggedIn Successfully!');
+    }
+
+    else{
+      this.notification.showError('Incorrect login credential');
+    }
   }
 }

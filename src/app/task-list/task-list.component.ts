@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-task-list',
@@ -15,6 +16,7 @@ export class TaskListComponent implements OnInit, AfterViewInit {
 
   constructor(
     private taskService: TaskService, 
+    private authService: AuthService,
     private notification: NotificationService,
     private route: ActivatedRoute,
     private router: Router
@@ -105,7 +107,9 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  logout(){
+  logOut(){
+    this.authService.logOut();
+    this.router.navigate(['/login'])
   }
 
 
