@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { LoginComponent } from './components/login/login.component';
-import { TokenInterceptor } from './interceptors/token.interceptor';
 
 
 @NgModule({
@@ -22,12 +21,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     HttpClientModule,
     MaterialModule
   ],
-    providers:[{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true 
-    }
-  ],
+    providers:[],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
