@@ -4,7 +4,6 @@ import { NotificationService } from '../services/notification.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { AuthService } from '../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -17,7 +16,6 @@ export class TaskListComponent implements OnInit, AfterViewInit {
   constructor(
     private taskService: TaskService, 
     private notification: NotificationService,
-    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router
   ){}
@@ -108,7 +106,6 @@ export class TaskListComponent implements OnInit, AfterViewInit {
   }
 
   logout(){
-    this.authService.logout();
   }
 
 
