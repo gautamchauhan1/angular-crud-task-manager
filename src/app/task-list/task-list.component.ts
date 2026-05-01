@@ -41,7 +41,7 @@ export class TaskListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.getAllTasks();
+      this.getAllTasks();    
   }
 
   getAllTasks(){
@@ -58,8 +58,7 @@ export class TaskListComponent implements OnInit, AfterViewInit {
       error: (err)=>
       {
         console.log(err);
-        alert('Error, while fetching Data...');
-        
+        this.notification.showError('Error while fetching data, check json server is running or not');
       }
     })
   }
