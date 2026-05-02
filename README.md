@@ -13,7 +13,7 @@ This project demonstrates core Angular concepts like components, services, routi
 🔄 CRUD operations with JSON Server
 🌐 Live Demo
 
-👉 https://angular-crud-task-manager-ivk2n69sf-gautam-chauhans-projects.vercel.app/
+👉 https://angular-crud-task-manager.vercel.app/login
 
 ⚠️ Note:
 The app is deployed on Vercel. Since JSON Server is not supported on Vercel,
